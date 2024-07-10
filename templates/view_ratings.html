@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Ratings</title>
+</head>
+
+<body>
+    <h1>Your Ratings</h1>
+
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+
+    <table>
+        <tr>
+            <th>Movie Title</th>
+            <th>Rating</th>
+            <th>Edit Rating</th>
+        </tr>
+        {% for rating in ratings %}
+        <tr>
+            <td>{{ rating.movie_title }}</td>
+            <td>{{ rating.rating }}</td>
+            <td>
+                <form action="/edit_rating" method="POST">
+                    <input type="hidden" name="movie_id" value="{{ rating.movieId }}">
+                    <input type="number" name="new_rating" min="0" max="5" step="0.1" value="{{ rating.rating }}"
+                        required>
+                    <button type="submit">Update</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Back to Home</h2>
+    <a href="/">Back to Home</a>
+</body>
+
+</html>

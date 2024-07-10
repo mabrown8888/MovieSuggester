@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+</head>
+
+<body>
+    <h1>Movie Recommender System</h1>
+
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+
+    <h2>Update Movie List</h2>
+    <form action="/update_movie_list" method="POST">
+        <button type="submit">Update Movie List</button>
+    </form>
+
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+        <label for="user_name_recommend">User Name:</label>
+        <input type="text" id="user_name_recommend" name="user_name" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+</body>
+
+</html>
